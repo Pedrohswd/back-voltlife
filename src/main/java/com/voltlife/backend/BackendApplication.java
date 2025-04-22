@@ -1,4 +1,4 @@
-package com.energiza.backend;
+package com.voltlife.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
