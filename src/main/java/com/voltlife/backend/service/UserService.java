@@ -23,7 +23,7 @@ public class UserService {
             newUser.setPassword(Utils.hashPassword(user.getPassword()));
             newUser.setName(user.getName());
             newUser.setDate(user.getDate());
-            newUser.addRole(user.getRole());
+            newUser.setRole(user.getRole());
             return userRepository.save(newUser);
         }
 
