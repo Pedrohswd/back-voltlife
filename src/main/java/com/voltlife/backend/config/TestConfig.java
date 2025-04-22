@@ -14,12 +14,20 @@ public class TestConfig {
 
     @PostConstruct
     public void instanciaDB(){
-//        UserDTO user = new UserDTO();
-//        user.setEmail("test@gmail.com");
-//        user.setPassword("123456");
-//        user.setDate("test");
-//        user.setName("test");
-//        userService.save(user);
+        UserDTO user = new UserDTO();
+        user.setEmail("test@gmail.com");
+        user.setPassword("123456");
+        user.setDate("test");
+        user.setName("test");
+        user.setRole("ADMIN");
+        userService.save(user);
+
+        user.setEmail("test2@gmail.com");
+        user.setPassword("123456");
+        user.setDate("test");
+        user.setName("test");
+        user.setRole("USER");
+        userService.save(user);
     }
 
 }

@@ -21,7 +21,7 @@ public class AuthenticationService {
     public String authenticate(LoginRequest authentication) {
         User user = userService.findByUsername(authentication.getEmail());
         String authPass = Utils.hashPassword(authentication.getPassword());
-        if(user.getPassword().equals(authPass)) {
+        if (user.getPassword().equals(authPass)) {
             return jwtService.generateToken(user);
         }
         return null;

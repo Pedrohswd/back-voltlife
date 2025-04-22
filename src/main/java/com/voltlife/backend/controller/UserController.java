@@ -25,7 +25,7 @@ public class UserController {
 
     @Operation(summary = "Register a new user", description = "Creates a new user in the system.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "User registered successfully",
+            @ApiResponse (responseCode = "200", description = "User registered successfully",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = User.class))),
             @ApiResponse(responseCode = "400", description = "Invalid request data", content = @Content),

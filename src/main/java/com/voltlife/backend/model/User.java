@@ -1,13 +1,12 @@
 package com.voltlife.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.voltlife.backend.model.enuns.UserRole;
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
 @Entity
 @Table(name = "USERS")
 public class User {
@@ -25,14 +24,11 @@ public class User {
 
     private String date;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "ENG_ROLE", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "role_id")
-    private List<String> roles = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<HouseUser> houses = new ArrayList<>();
 
-    public void addRole(String role){
-        roles.add(role);
-    }
+    private UserRole role;
 
     public User() {
     }
@@ -43,7 +39,7 @@ public class User {
         this.password = password;
         this.name = name;
         this.date = date;
-        this.roles.add(role);
+        this.role = UserRole.valueOf(role);
     }
 
     public Long getId() {
@@ -86,11 +82,11 @@ public class User {
         this.date = date;
     }
 
-    public List<String> getRoles() {
-        return roles;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = UserRole.valueOf(role);
     }
 }

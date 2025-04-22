@@ -20,14 +20,14 @@ public class JwtService {
     public String generateToken(User user) {
         Instant now = Instant.now();
         long expiry = 10800L;
-        var roles = user.getRoles();
+        var role = user.getRole();
 
         var claims = JwtClaimsSet.builder()
                 .issuer("jwt")
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiry))
                 .subject(user.getEmail())
-                .claim("roles", roles)
+                .claim("role", role)
                 .build();
 
         return encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
