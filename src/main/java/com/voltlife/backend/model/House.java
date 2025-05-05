@@ -12,7 +12,13 @@ public class House {
     private Long id;
 
     private String name;
-    private String address;
+    private String cep;
+    private String street;
+    private String number;
+    private String district;
+    private String city;
+    private String state;
+    private String country;
 
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
     private List<HouseUser> users = new ArrayList<>();
@@ -33,12 +39,64 @@ public class House {
         this.name = nome;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public List<HouseUser> getUsers() {
