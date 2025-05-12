@@ -3,7 +3,6 @@
 
 ## ✅ README - VoltLife Backend (`README.md`)
 
-```markdown
 # ⚙️ VoltLife Backend
 
 Este é o backend do sistema **VoltLife**, uma API RESTful desenvolvida em Java com Spring Boot, responsável por processar dados financeiros e realizar validações contábeis complexas.
