@@ -5,7 +5,7 @@
 
 # ⚙️ VoltLife Backend
 
-Este é o backend do sistema **VoltLife**, uma API RESTful desenvolvida em Java com Spring Boot, responsável por processar dados financeiros e realizar validações contábeis complexas.
+Este é o backend do sistema **VoltLife**, uma API RESTful desenvolvida em Java com Spring Boot, responsável por cadastrar dados de residencias e eletronicos.
 
 ## 🧰 Tecnologias Utilizadas
 
@@ -30,9 +30,8 @@ Este é o backend do sistema **VoltLife**, uma API RESTful desenvolvida em Java 
 
 ## 🚀 Funcionalidades
 
-- Cadastro e consulta de usuários, grupos, metas e lançamentos
-- Geração de relatórios agrupados por tipo, grupo e categoria
-- Validações contábeis (Cest2045, lançamentos esperados, etc.)
+- Cadastro e consulta de usuários, casas e eletronicos
+- Geração de relatórios
 - Controle de acesso por perfis
 - Documentação Swagger integrada
 
