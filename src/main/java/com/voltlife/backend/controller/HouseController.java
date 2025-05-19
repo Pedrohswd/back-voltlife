@@ -41,11 +41,18 @@ public class HouseController {
         return ResponseEntity.ok(houseService.updateHouse(id, house));
     }
 
-        @PostMapping("/{houseId}/add-guest")
+    @PostMapping("/{houseId}/add-guest")
     public ResponseEntity<HouseUser> addGuest(@PathVariable Long houseId,
                                               @RequestParam String email) {
         HouseUser houseUser = houseService.addGuestToHouse(houseId, email);
         return ResponseEntity.ok(houseUser);
+    }
+
+    @DeleteMapping("/{houseId}/remove-guest/{email}")
+    public ResponseEntity<Void> removeGuest(@PathVariable Long houseId,
+                                              @PathVariable String email) {
+        houseService.removeGuestToHouse(houseId, email);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")

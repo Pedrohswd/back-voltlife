@@ -63,6 +63,20 @@ public class HouseService {
         return houseUserRepository.save(houseUser);
     }
 
+    public void removeGuestToHouse(Long houseId, String email) {
+        House house = houseRepository.findById(houseId)
+                .orElseThrow(() -> new RuntimeException("Casa não encontrada"));
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        houseUserRepository.findByUserIdAndHouseId(user.getId(), houseId)
+                .ifPresentOrElse(hu -> houseUserRepository.delete(hu), () -> {
+                    throw new RuntimeException("Usuário não é vinculado a essa casa");
+                });
+
+    }
+
     public List<HouseDTO> getHousesByUser(Long userId) {
         List<House> houses = houseRepository.findByUserId(userId);
 
