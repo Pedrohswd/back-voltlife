@@ -2,6 +2,7 @@ package com.voltlife.backend.controller;
 
 import com.voltlife.backend.model.House;
 import com.voltlife.backend.model.HouseUser;
+import com.voltlife.backend.model.dtos.HouseDTO;
 import com.voltlife.backend.service.HouseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class HouseController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<House>> getByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<HouseDTO>> getByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(houseService.getHousesByUser(userId));
     }
 
@@ -45,6 +46,13 @@ public class HouseController {
                                               @RequestParam String email) {
         HouseUser houseUser = houseService.addGuestToHouse(houseId, email);
         return ResponseEntity.ok(houseUser);
+    }
+
+    @DeleteMapping("/{houseId}/remove-guest/{email}")
+    public ResponseEntity<Void> removeGuest(@PathVariable Long houseId,
+                                              @PathVariable String email) {
+        houseService.removeGuestToHouse(houseId, email);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")

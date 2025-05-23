@@ -1,16 +1,9 @@
-package com.voltlife.backend.model;
+package com.voltlife.backend.model.dtos;
 
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class House {
-    @Id
-    @GeneratedValue
+public class HouseDTO {
     private Long id;
-
     private String name;
     private String cep;
     private String street;
@@ -19,9 +12,22 @@ public class House {
     private String city;
     private String state;
     private String country;
+    private List<HouseUserDTO> users;
 
-    @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
-    private List<HouseUser> users = new ArrayList<>();
+    public HouseDTO(Long id, String name, String cep, String street, String number,
+                    String district, String city, String state, String country,
+                    List<HouseUserDTO> users) {
+        this.id = id;
+        this.name = name;
+        this.cep = cep;
+        this.street = street;
+        this.number = number;
+        this.district = district;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.users = users;
+    }
 
     public Long getId() {
         return id;
@@ -33,10 +39,6 @@ public class House {
 
     public String getName() {
         return name;
-    }
-
-    public void setNome(String nome) {
-        this.name = nome;
     }
 
     public void setName(String name) {
@@ -99,11 +101,11 @@ public class House {
         this.country = country;
     }
 
-    public List<HouseUser> getUsers() {
+    public List<HouseUserDTO> getUsers() {
         return users;
     }
 
-    public void setUsers(List<HouseUser> users) {
+    public void setUsers(List<HouseUserDTO> users) {
         this.users = users;
     }
 }
