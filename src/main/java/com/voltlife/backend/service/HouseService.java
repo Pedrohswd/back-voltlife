@@ -111,6 +111,7 @@ public class HouseService {
             house.setNumber(updated.getNumber());
             house.setState(updated.getState());
             house.setStreet(updated.getStreet());
+
             return houseRepository.save(house);
         }).orElseThrow(() -> new RuntimeException("Casa não encontrada"));
     }
