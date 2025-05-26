@@ -87,7 +87,7 @@ public class HouseService {
             }).collect(Collectors.toList());
 
             return new HouseDTO(
-                    h.getId(), h.getName(), h.getCep(), h.getStreet(), h.getNumber(),
+                    h.getId(), h.getName(), h.getPostalCode(), h.getStreet(), h.getNumber(),
                     h.getDistrict(), h.getCity(), h.getState(), h.getCountry(), users
             );
         }).collect(Collectors.toList());
@@ -104,7 +104,7 @@ public class HouseService {
     public House updateHouse(Long id, House updated) {
         return houseRepository.findById(id).map(house -> {
             house.setNome(updated.getName());
-            house.setCep(updated.getCep());
+            house.setPostalCode(updated.getPostalCode());
             house.setCity(updated.getCity());
             house.setCountry(updated.getCountry());
             house.setDistrict(updated.getDistrict());

@@ -12,7 +12,7 @@ public class House {
     private Long id;
 
     private String name;
-    private String cep;
+    private String postalCode;
     private String street;
     private String number;
     private String district;
@@ -43,12 +43,12 @@ public class House {
         this.name = name;
     }
 
-    public String getCep() {
-        return cep;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setPostalCode(String cep) {
+        this.postalCode = cep;
     }
 
     public String getStreet() {
