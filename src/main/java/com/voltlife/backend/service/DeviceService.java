@@ -25,7 +25,12 @@ public class DeviceService {
                 .orElseThrow(() -> new RuntimeException("Casa não encontrada"));
 
         device.setHouse(house);
-        return deviceRepository.save(device);
+        Device saved = deviceRepository.save(device);
+
+        String generatedCode = (device.getName() + "-" + saved.getId()).toUpperCase().replaceAll("\\s+", "-");
+        saved.setCode(generatedCode);
+
+        return deviceRepository.save(saved);
     }
 
     public List<Device> getDevicesByHouse(Long houseId) {
