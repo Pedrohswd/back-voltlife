@@ -2,6 +2,7 @@ package com.voltlife.backend.controller;
 
 import com.voltlife.backend.model.House;
 import com.voltlife.backend.model.HouseUser;
+import com.voltlife.backend.model.Report;
 import com.voltlife.backend.model.dtos.HouseDTO;
 import com.voltlife.backend.service.HouseService;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,11 @@ public class HouseController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         houseService.deleteHouse(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/report/house/{houseId}")
+    public ResponseEntity<List<Report>> getReportsByHouse(@PathVariable Long houseId) {
+        return ResponseEntity.ok(houseService.getReportsByHouseId(houseId));
     }
 }
 

@@ -2,6 +2,7 @@ package com.voltlife.backend.service;
 
 import com.voltlife.backend.model.House;
 import com.voltlife.backend.model.HouseUser;
+import com.voltlife.backend.model.Report;
 import com.voltlife.backend.model.User;
 import com.voltlife.backend.model.dtos.HouseDTO;
 import com.voltlife.backend.model.dtos.HouseUserDTO;
@@ -9,6 +10,7 @@ import com.voltlife.backend.model.enuns.HouseRole;
 import com.voltlife.backend.repository.HouseRepository;
 import com.voltlife.backend.repository.HouseUserRepository;
 import com.voltlife.backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,9 +20,14 @@ import java.util.stream.Collectors;
 @Service
 public class HouseService {
 
-    private final HouseRepository houseRepository;
-    private final UserRepository userRepository;
-    private final HouseUserRepository houseUserRepository;
+    @Autowired
+    private HouseRepository houseRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private HouseUserRepository houseUserRepository;
+    @Autowired
+    private DeviceService deviceService;
 
     public HouseService(HouseRepository houseRepository, UserRepository userRepository, HouseUserRepository houseUserRepository) {
         this.houseRepository = houseRepository;
@@ -99,6 +106,10 @@ public class HouseService {
 
     public void deleteHouse(Long id) {
         houseRepository.deleteById(id);
+    }
+
+    public List<Report> getReportsByHouseId(Long houseId) {
+        return deviceService.getReportsByHouseId(houseId);
     }
 
     public House updateHouse(Long id, House updated) {

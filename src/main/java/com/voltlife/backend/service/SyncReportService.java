@@ -6,6 +6,7 @@ import com.voltlife.backend.model.Report;
 import com.voltlife.backend.model.dtos.ReportDTO;
 import com.voltlife.backend.repository.ReportRepository;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,16 +18,18 @@ import java.util.stream.Collectors;
 @Service
 public class SyncReportService {
 
-    private final ReportRepository reportRepository;
-    private final RestTemplate restTemplate;
-    private final ObjectMapper objectMapper;
+    @Autowired
+    private ReportRepository reportRepository;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private static final String REMOTE_URL = "http://187.58.58.185:9000/dado-salvo";
+    private final RestTemplate restTemplate;
 
     public SyncReportService(ReportRepository reportRepository) {
-        this.reportRepository = reportRepository;
         this.restTemplate = new RestTemplate();
-        this.objectMapper = new ObjectMapper();
+
+
     }
 
     @PostConstruct
