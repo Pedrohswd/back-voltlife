@@ -3,6 +3,7 @@ package com.voltlife.backend.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "report")
@@ -25,6 +26,11 @@ public class Report {
     private Double epaC;
     private Integer rele;
     private Double rssiWifi;
+    private Double consumoHora;
+    @Temporal(TemporalType.DATE)
+    private Date dataColeta;
+    @Temporal(TemporalType.TIME)
+    private Date horaColeta;
 
     private LocalDateTime requestAt;
 
@@ -44,37 +50,25 @@ public class Report {
     private Integer windDeg;
     private Double windGust;
 
-    public Report(Long id, String idDsp, Double pa, Double qa, Double sa, Double uarms, Double iarms, Double pft, Double pga, Double freq, Double epaC, Integer rele, Double rssiWifi, LocalDateTime requestAt, Double temperatura, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer humidity, String weatherMain, String weatherDescription, String weatherIcon, Double windSpeed, Integer windDeg, Double windGust) {
-        this.id = id;
-        this.idDsp = idDsp;
-        this.pa = pa;
-        this.qa = qa;
-        this.sa = sa;
-        this.uarms = uarms;
-        this.iarms = iarms;
-        this.pft = pft;
-        this.pga = pga;
-        this.freq = freq;
-        this.epaC = epaC;
-        this.rele = rele;
-        this.rssiWifi = rssiWifi;
-        this.requestAt = requestAt;
-        this.temperatura = temperatura;
-        this.feelsLike = feelsLike;
-        this.tempMin = tempMin;
-        this.tempMax = tempMax;
-        this.pressure = pressure;
-        this.humidity = humidity;
-        this.weatherMain = weatherMain;
-        this.weatherDescription = weatherDescription;
-        this.weatherIcon = weatherIcon;
-        this.windSpeed = windSpeed;
-        this.windDeg = windDeg;
-        this.windGust = windGust;
-    }
-
+    
     public Report() {
 
+    }
+
+    public Date getDataColeta() {
+        return dataColeta;
+    }
+
+    public void setDataColeta(Date dataColeta) {
+        this.dataColeta = dataColeta;
+    }
+
+    public Date getHoraColeta() {
+        return horaColeta;
+    }
+
+    public void setHoraColeta(Date horaColeta) {
+        this.horaColeta = horaColeta;
     }
 
     public Long getId() {
@@ -127,6 +121,14 @@ public class Report {
 
     public Double getIarms() {
         return iarms;
+    }
+
+    public Double getConsumoHora() {
+        return consumoHora;
+    }
+
+    public void setConsumoHora(Double consumoHora) {
+        this.consumoHora = consumoHora;
     }
 
     public void setIarms(Double iarms) {
