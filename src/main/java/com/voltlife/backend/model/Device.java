@@ -12,6 +12,8 @@ public class Device {
 
     private String name;
     private String mark;
+    @Column(unique=true)
+    private String code;
     private String model;
     private double voltage; // em Volts
     private double monthlyConsumption; // em kWh/mês
@@ -33,6 +35,14 @@ public class Device {
 
     public String getName() {
         return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public void setName(String name) {

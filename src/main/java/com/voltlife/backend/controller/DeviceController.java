@@ -2,6 +2,7 @@ package com.voltlife.backend.controller;
 
 import com.voltlife.backend.model.Device;
 import com.voltlife.backend.service.DeviceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +13,9 @@ import java.util.List;
 @RequestMapping("/api/devices")
 public class DeviceController {
 
-    private final DeviceService deviceService;
+    @Autowired
+    private DeviceService deviceService;
 
-    public DeviceController(DeviceService deviceService) {
-        this.deviceService = deviceService;
-    }
 
     @PostMapping
     public ResponseEntity<Device> create(@RequestBody Device device,
